@@ -102,7 +102,6 @@ class Case:
                             break
                 else:
                     l.append(self.parse_item(data))
-            print l
             for i in range(repeat):
                 if 0 < i:
                     if data.has_key('separator'):
