@@ -89,13 +89,25 @@ class Case:
             }
         result = ''
         if data.has_key('repeat'):
-            for i in range(self.calc(data['repeat'])):
+            s = set()
+            l = []
+            repeat = self.calc(data['repeat'])
+            for i in range(repeat):
+                if data.has_key('option') and ('unique' in data['option']):
+                    while True:
+                        r = self.parse_item(data)
+                        if r not in s:
+                            l.append(r)
+                            s.add(r)
+                            break
+                else:
+                    l.append(self.parse_item(data))
+            print l
+            for i in range(repeat):
                 if 0 < i:
                     if data.has_key('separator'):
                         result += delimiter[data['separator']]
-                result += self.parse_item(data)
-        else:
-            result = self.parse_item(data)
+                result += l[i]
         if data.has_key('delimiter'):
             return result + delimiter[data['delimiter']]
         return result
