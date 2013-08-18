@@ -102,6 +102,11 @@ class Case:
                             break
                 else:
                     l.append(self.parse_item(data))
+            if data.has_key('option'):
+                if 'asc' in data['option']:
+                    l.sort();
+                elif 'desc' in data['option']:
+                    l.sort(reverse=True)
             for i in range(repeat):
                 if 0 < i:
                     if data.has_key('separator'):
