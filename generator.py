@@ -79,7 +79,7 @@ class Case:
     def parse_data(self, data):
         delimiter = {
             'none': '',
-            'new_line': '\n',
+            'newline': '\n',
             'space': ' ',
             'comma': ',',
             'piriod': '.',
