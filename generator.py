@@ -112,6 +112,8 @@ class Case:
                     if data.has_key('separator'):
                         result += delimiter[data['separator']]
                 result += l[i]
+        else:
+            result = self.parse_item(data)
         if data.has_key('delimiter'):
             return result + delimiter[data['delimiter']]
         return result
