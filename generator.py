@@ -13,13 +13,14 @@ class Case:
         for members in str(formula).split('+'):
             member = members.split('-')
             for i in range(len(member)):
+                term = member[i].strip()
                 n = 0
-                if self.map.has_key(member[i]):
-                    n = self.map[member[i]]
-                elif member[i] == '':
+                if self.map.has_key(term):
+                    n = self.map[term]
+                elif term == '':
                     n = 0
                 else:
-                    n = int(member[i])
+                    n = int(term)
                 if i == 0:
                     result += n
                 else:
@@ -78,7 +79,7 @@ class Case:
     def parse_data(self, data):
         delimiter = {
             'none': '',
-            'newline': '\n',
+            'new_line': '\n',
             'space': ' ',
             'comma': ',',
             'piriod': '.',
