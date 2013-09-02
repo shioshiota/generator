@@ -9,6 +9,12 @@ class Case:
     map = {}
 
     def calc_formula(self, formula):
+        if str(formula).strip().startswith("min"):
+            exprs = str(formula).strip()[4:][:-1].split()
+            return  min(map((lambda x : self.calc_formula(x)), exprs))
+        if str(formula).strip().startswith("max"):
+            exprs = str(formula).strip()[4:][:-1].split()
+            return max(map((lambda x : self.calc_formula(x)), exprs))
         result = 0
         for members in str(formula).split('+'):
             member = members.split('-')
